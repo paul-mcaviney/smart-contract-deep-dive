@@ -11,6 +11,14 @@ contract HomeOwnersBallot is Ownable {
     address private owner;      // The address that initially deploys the contract becomes the owner
 
     // state variables for candidates
+    // an object that holds President Objects and each president has a vote number attached
+    // an object that holds Secretary Objects and each secretary has a vote number attached
+    // an object that holds Treasurer Objects and each treasurer has a vote number attached
+    // an object that holds Improvement Board Member Objects, each has a vote number attached
+
+    // an object that holds the first yes/no and also has a vote number attached
+    // an object that holds the second yes/no and also has a vote number attached
+
     
     
     constructor() {  // might not need this with the openzeppelin import
@@ -27,6 +35,8 @@ contract HomeOwnersBallot is Ownable {
 
     function addVote() public {
         // takes in a votable object and increases the vote count by 1
+        // if voting for president, secretary, treasurer -- sender can only vote once
+        // if voting for Board Members, can vote 3 times
     }
 
     function getVotes() public {
