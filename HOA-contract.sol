@@ -1,9 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
+/********************************************************/
+/* For learning purposes ONLY. Do not use in production */
+/********************************************************/
+
 // Download into project folder with `npm install @openzeppelin/contracts`
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+// Inherits the Ownable contract so we can use its functions and modifiers
 contract HomeOwnersBallot is Ownable {
 
     // Custom type to describe a Presidential Candidate and hold votes
@@ -15,6 +20,7 @@ contract HomeOwnersBallot is Ownable {
     // Array of Presidential Candidates
     Candidate[] public presidents;
 
+    // Initialize the contract with a few candidates
     constructor() {
         presidents.push(Candidate({name: "Bob", votes: 0}));
         presidents.push(Candidate({name: "Alice", votes: 0}));
@@ -22,7 +28,7 @@ contract HomeOwnersBallot is Ownable {
         presidents.push(Candidate({name: "Gertrude", votes: 0}));
     }
 
-    // Add a President Candidate - onlyOwner
+    // Add a Presidential Candidate - onlyOwner
     function addCandidate(string memory _name) public onlyOwner {
         presidents.push(Candidate({name: _name, votes: 0}));
     }
@@ -68,17 +74,19 @@ contract HomeOwnersBallot is Ownable {
         }
     }
 
-    // // Add a vote to candidate by their index number
-    // function addVoteByIndex(uint _index) public {
-    //     presidents[_index].votes++;
-    // }
+    // Returns all the Presidential Candidates and their vote counts
+    function getPresidents() public view returns (Candidate[] memory) {
+        return presidents;
+    }
 
-    function getWinner() public view returns (string memory winner) {
+    // Decide the winner based on vote count
+    function getWinner() public view returns (Candidate memory winner) {
         uint256 winningVoteCount = 0;
+
         for (uint256 i = 0; i < presidents.length; i++) {
             if (presidents[i].votes > winningVoteCount) {
                 winningVoteCount = presidents[i].votes;
-                winner = presidents[i].name;
+                winner = presidents[i];
             }
         }
 
