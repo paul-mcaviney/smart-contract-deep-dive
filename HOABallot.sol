@@ -9,7 +9,7 @@ pragma solidity ^0.8.13;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 // Inherits the Ownable contract so we can use its functions and modifiers
-contract HomeOwnersBallot is Ownable {
+contract HOABallot is Ownable {
 
     // Custom type to describe a Presidential Candidate and hold votes
     struct Candidate {
@@ -20,13 +20,6 @@ contract HomeOwnersBallot is Ownable {
     // Array of Presidential Candidates
     Candidate[] public presidents;
 
-    // Initialize the contract with a few candidates
-    constructor() {
-        presidents.push(Candidate({name: "Bob", votes: 0}));
-        presidents.push(Candidate({name: "Alice", votes: 0}));
-        presidents.push(Candidate({name: "Billy", votes: 0}));
-        presidents.push(Candidate({name: "Gertrude", votes: 0}));
-    }
 
     // Add a Presidential Candidate - onlyOwner
     function addCandidate(string memory _name) public onlyOwner {
