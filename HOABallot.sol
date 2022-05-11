@@ -48,7 +48,7 @@ contract HOABallot is Ownable {
         // Make sure a candidate was found
         require(foundCandidate, "removeCandidate Error: Candidate not found");
 
-        // shift candidate to be remove to the end of the array and the rest forward
+        // shift candidate to be removed to the end of the array and the rest forward
         for (uint256 i = index; i < presidents.length - 1; i++) {
             presidents[i] = presidents[i + 1];
         }
