@@ -33,7 +33,7 @@ contract HOABallot {
     // Array of Presidential Candidates
     Candidate[] public candidates;
 
-    constructor() public {
+    constructor() {
         owner = msg.sender;
     }
 
