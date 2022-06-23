@@ -7,12 +7,6 @@ pragma solidity ^0.8.13;
 /********************************************************/
 
 
-// Download into project folder with `npm install @openzeppelin/contracts`
-// import "@openzeppelin/contracts/access/Ownable.sol";
-
-// Inherits the Ownable contract so we can use its functions and modifiers
-//contract HOABallot is Ownable {
-
 contract HOABallot {
 
     // variable to hold the address of the contract owner
@@ -37,7 +31,7 @@ contract HOABallot {
         owner = msg.sender;
     }
 
-    // Return the address of the onwer for the contract
+    // Return the address of the owner for the contract
     function getOwner() public view returns (address) {
         return owner;
     }
