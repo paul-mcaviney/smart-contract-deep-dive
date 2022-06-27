@@ -7,16 +7,11 @@ pragma solidity ^0.8.13;
 /********************************************************/
 
 
-contract HOABallot {
+// Download into project folder with `npm install @openzeppelin/contracts`
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-    // variable to hold the address of the contract owner
-    address owner;
-
-    // Custom modifier for access controls to certain functions
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Access Error: caller is not the owner of this contract");
-        _;
-    }
+// Inherits the Ownable contract so we can use its functions and modifiers
+contract HOABallot is Ownable {
 
     // Custom type to describe a Presidential Candidate and hold votes
     struct Candidate {
@@ -26,15 +21,7 @@ contract HOABallot {
 
     // Array of Presidential Candidates
     Candidate[] public candidates;
-
-    constructor() {
-        owner = msg.sender;
-    }
-
-    // Return the address of the owner for the contract
-    function getOwner() public view returns (address) {
-        return owner;
-    }
+    
 
     // Add a President Candidate - onlyOwner
     function addCandidate(string memory _name) public onlyOwner {
