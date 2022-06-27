@@ -58,7 +58,7 @@ contract HOABallot is Ownable {
     }
 
 
-    // Reset the President Vote Counts - onlyOwner
+    // Reset the Candidate Vote Counts - onlyOwner
     function resetVoteCount() public onlyOwner {
         for (uint256 p = 0; p < candidates.length; p++) {
             candidates[p].votes = 0;
